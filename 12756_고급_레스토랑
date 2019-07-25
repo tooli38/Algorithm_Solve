@@ -1,0 +1,21 @@
+#include <cstdio>
+#include <algorithm>
+
+using namespace std;
+
+int itv[2], itd[2]; //공격력과 생명력, 0 A, 1 B 
+
+int main(){
+	for(int i = 0; i<2; i++)
+		scanf("%d %d", &itv[i], &itd[i]);
+		
+	while(itd[0]>0 && itd[1]>0)//둘 중에 생명력이 남아있을때까지 계속진행.
+	{
+		itd[0]-=itv[1];//b가 a공격
+		itd[1]-=itv[0];//a가 b공격	
+	} 
+	
+	if(itd[0]<=0 && itd[1] <= 0)	printf("DRAW");
+	else if(itd[0]>0) 	printf("PLAYER A");
+	else printf("PLAYER B"); 
+}
